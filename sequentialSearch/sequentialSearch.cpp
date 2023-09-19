@@ -69,6 +69,10 @@ int main()
     {
         std::cout << "Key found at position: " << position << std::endl;
     }
+    else
+    {
+        std::cout << "Key was not found" << std::endl;
+    }
 
     if (search_elapsed_seconds.count() < 1.0)
     {
