@@ -37,12 +37,6 @@ bool binarySearch(const std::vector<int> &list, int key, int &count)
     return false;
 }
 
-double measureElapsedTime(std::chrono::steady_clock::time_point start, std::chrono::steady_clock::time_point end)
-{
-    std::chrono::duration<double> elapsed_seconds = end - start;
-    return elapsed_seconds.count();
-}
-
 void printResults(std::string name, bool results, double elapsedTime, int comparisons, int searchCount)
 {
     std::cout << std::endl
@@ -88,19 +82,23 @@ int main()
     std::vector<int> generatedList;
     generateList(size, generatedList);
 
-    int countBinary{};
+    int count{};
 
     auto start = std::chrono::steady_clock::now();
-    bool resultBinary = binarySearch(generatedList, key, countBinary);
+    bool resultBinary = binarySearch(generatedList, key, count);
     auto end = std::chrono::steady_clock::now();
 
-    double timeForBinarySearch = measureElapsedTime(start, end);
+    std::chrono::duration<double> search_elapsed_seconds = end - start;
 
-    std::cout << "Binary Search\n";
-    std::cout << "Status: " << resultBinary << std::endl;
-    std::cout << "Elapsed per search: " << std::fixed << std::setprecision(6) << timeForBinarySearch << " seconds\n";
-    std::cout << "Comparisons per search: " << countBinary << std::endl;
-    std::cout << "Searches: " << 1 << std::endl;
+    if (resultBinary)
+    {
+        std::cout << "Binary Search\n";
+        std::cout << "Time elapsed: " << std::fixed << std::setprecision(6) << search_elapsed_seconds << " seconds\n";
+        std::cout << "Comparisons count: " << count << std::endl;
+    }
+    else{
+        std::cout << "Error\n";
+    }
 
     return 0;
 }
