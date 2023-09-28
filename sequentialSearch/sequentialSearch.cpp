@@ -30,27 +30,29 @@ bool searchList(const std::vector<int> &list, int key, int &pos)
 
 int main()
 {
+    using std::cout, std::endl, std::cin;
+
     std::srand(std::time(nullptr));
 
     int size{};
-    std::cout << "Enter data size: \n";
-    std::cin >> size;
+    cout << "Enter data size: \n";
+    cin >> size;
 
     char option;
-    std::cout << "Randomize key value? (y/n)\n";
-    std::cin >> option;
+    cout << "Randomize key value? (y/n)\n";
+    cin >> option;
 
     int key{};
 
     if (option == 'y')
     {
         key = rand() % size + 1;
-        std::cout << "Key: " << key << std::endl;
+        cout << "Key: " << key << endl;
     }
     else
     {
-        std::cout << "Enter key value: \n";
-        std::cin >> key;
+        cout << "Enter key value: \n";
+        cin >> key;
     }
 
     std::vector<int> generatedList;
@@ -63,25 +65,25 @@ int main()
 
     std::chrono::duration<double> search_elapsed_seconds = endSearch - startSearch;
 
-    std::cout << "Key found: " << result << std::endl;
+    cout << "Key found: " << result << endl;
 
     if (result)
     {
-        std::cout << "Key found at position: " << position << std::endl;
+        cout << "Key found at position: " << position << endl;
     }
     else
     {
-        std::cout << "Key was not found" << std::endl;
+        cout << "Key was not found" << endl;
     }
 
     if (search_elapsed_seconds.count() < 1.0)
     {
         double elapsed_milliseconds = search_elapsed_seconds.count() * 1000;
-        std::cout << "Search time: " << elapsed_milliseconds << " milliseconds" << std::endl;
+        cout << "Search time: " << elapsed_milliseconds << " milliseconds" << endl;
     }
     else
     {
-        std::cout << "Search time: " << search_elapsed_seconds.count() << " seconds" << std::endl;
+        cout << "Search time: " << search_elapsed_seconds.count() << " seconds" << endl;
     }
 
     return 0;

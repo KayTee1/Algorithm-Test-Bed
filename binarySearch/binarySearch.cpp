@@ -39,44 +39,47 @@ bool binarySearch(const std::vector<int> &list, int key, int &count)
 
 void printResults(std::string name, bool results, double elapsedTime, int comparisons, int searchCount)
 {
-    std::cout << std::endl
-              << name << std::endl;
+    using std::cout, std::endl;
+
+    cout << endl
+         << name << endl;
     for (int i = 0; i < name.length(); i++)
     {
-        std::cout << "-";
+        cout << "-";
     }
-    std::cout << std::endl;
-
-    std::cout << "Status: " << results << std::endl;
-    std::cout << "Elapsed per search: " << std::fixed << std::setprecision(6) << elapsedTime << " seconds" << std::endl;
-    std::cout << "Comparisons per search: " << comparisons << std::endl;
-    std::cout << "Searches: " << searchCount << std::endl;
-    std::cout << std::endl;
+    cout << endl;
+    cout << "Status: " << results << endl;
+    cout << "Elapsed per search: " << std::fixed << std::setprecision(6) << elapsedTime << " seconds" << endl;
+    cout << "Comparisons per search: " << comparisons << endl;
+    cout << "Searches: " << searchCount << endl;
+    cout << endl;
 }
 
 int main()
 {
+    using std::cout, std::endl, std::cin;
+
     srand(time(nullptr));
 
     int size{};
-    std::cout << "Enter data size: \n";
-    std::cin >> size;
+    cout << "Enter data size: \n";
+    cin >> size;
 
     char option;
-    std::cout << "Randomize key value? (y/n)\n";
-    std::cin >> option;
+    cout << "Randomize key value? (y/n)\n";
+    cin >> option;
 
     int key{};
 
     if (option == 'y')
     {
         key = rand() % size + 1;
-        std::cout << "Key value: " << key << std::endl;
+        cout << "Key value: " << key << endl;
     }
     else
     {
-        std::cout << "Enter key value: \n";
-        std::cin >> key;
+        cout << "Enter key value: \n";
+        cin >> key;
     }
 
     std::vector<int> generatedList;
@@ -92,12 +95,13 @@ int main()
 
     if (resultBinary)
     {
-        std::cout << "Binary Search\n";
-        std::cout << "Time elapsed: " << std::fixed << std::setprecision(6) << search_elapsed_seconds << " seconds\n";
-        std::cout << "Comparisons count: " << count << std::endl;
+        cout << "Binary Search\n";
+        cout << "Time elapsed: " << std::fixed << std::setprecision(6) << search_elapsed_seconds << " seconds\n";
+        cout << "Comparisons count: " << count << endl;
     }
-    else{
-        std::cout << "Error\n";
+    else
+    {
+        cout << "Error\n";
     }
 
     return 0;

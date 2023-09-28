@@ -55,28 +55,30 @@ void insertionSort(std::vector<int> &list)
 
 int main()
 {
+    using std::cout, std::endl, std::cin;
+
     srand(time(nullptr));
 
     std::chrono::steady_clock::time_point start_time = start_timer();
 
     int dataSize{}, start{};
-    std::cout << "Enter data size: \n";
-    std::cin >> dataSize;
+    cout << "Enter data size: \n";
+    cin >> dataSize;
 
     std::vector<int> generatedList = generateList(dataSize);
 
     int limit = (dataSize > 20) ? 20 : dataSize;
 
-    std::cout << "\nList before sort: \n";
+    cout << "\nList before sort: \n";
     printVec(generatedList, limit);
 
     double finishedTime = stop_timer(start_time);
 
-    std::cout << "List after sort: \n";
+    cout << "List after sort: \n";
     insertionSort(generatedList);
     printVec(generatedList, limit);
 
-    std::cout << "\nElapsed time: " << std::fixed << std::setprecision(6) << finishedTime << " seconds" << std::endl;
+    cout << "\nElapsed time: " << std::fixed << std::setprecision(6) << finishedTime << " seconds" << endl;
 
     return 0;
 }

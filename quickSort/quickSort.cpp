@@ -44,17 +44,19 @@ void printVec(const std::vector<int>& vec, int dataSize) {
 }
 
 int main() {
+    using std::cout, std::endl, std::cin;
+
     srand(time(nullptr));
 
     int dataSize{}, start{};
-    std::cout << "Enter data size: \n";
-    std::cin >> dataSize;
+    cout << "Enter data size: \n";
+    cin >> dataSize;
 
     std::vector<int> generatedList = generateList(dataSize);
 
     int limit = (dataSize > 20) ? 20 : dataSize;
 
-    std::cout << "\nList before sort: \n";
+    cout << "\nList before sort: \n";
     printVec(generatedList, dataSize);
 
     auto start_time = std::chrono::steady_clock::now();
@@ -64,10 +66,10 @@ int main() {
     auto end_time = std::chrono::steady_clock::now();
     double elapsed_time = std::chrono::duration<double>(end_time - start_time).count();
 
-    std::cout << "List after sort: \n";
+    cout << "List after sort: \n";
     printVec(generatedList, dataSize);
 
-    std::cout << "\nElapsed time: " << std::fixed << std::setprecision(6) << elapsed_time << " seconds" << std::endl;
+    cout << "\nElapsed time: " << std::fixed << std::setprecision(6) << elapsed_time << " seconds" << endl;
 
     return 0;
 }
